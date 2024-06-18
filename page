@@ -1,6 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="en">
+.clickable-left, .clickable-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    cursor: pointer;
+}
 
-    <><div class="container">
+.clickable-left {
+    left: 0;
+}
+
+.clickable-right {
+    right: 0;
+}
+article {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    #comicFrame {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        padding: 10 10px;
+    }
+    
+    @media (max-width: 1080px) { /* Adjust the breakpoint as needed */
+    #comicFrame {
+        max-height: calc(100vh - 25px); /* Adjust the value to leave space for header and footer */
+    }
+}
+        </style>
+
+        [v:cfscriptcode]
+
+        [c:iscomicpage]
+            <script type="text/javascript">
+                activateKeyboardNavigation("[v:prevcomicjs]#content-start", "[v:nextcomicjs]#content-start", "ArrowLeft", "ArrowRight");
+            </script>
+        [/]
+
+        <script type="text/javascript">
+            var selectElementText = function(element) {
+                if (window.getSelection && document.createRange)
+                {
+                    var selection = window.getSelection();
+                    var range = document.createRange();
+                    range.selectNodeContents(element);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+            };
+        </script>
+    </head>
+    </html>
+    
+  
+  <><div class="container">
         <article>
             <div class="clickable-left" onclick="changeImage(currentIndex - 1)"></div>
             <div class="clickable-right" onclick="changeImage(currentIndex + 1)"></div>
